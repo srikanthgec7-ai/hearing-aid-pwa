@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111827">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg">
+<title>Hearing Assist</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#f9fafb;background:#111827}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:linear-gradient(160deg,#111827,#1f2937)}
+main{max-width:520px;margin:auto;padding:22px 18px 34px}
+h1{font-size:30px;margin:8px 0 4px}.sub{color:#cbd5e1;margin-bottom:22px}
+.card{background:#ffffff10;border:1px solid #ffffff18;border-radius:20px;padding:18px;margin:14px 0;backdrop-filter:blur(10px)}
+.status{display:flex;align-items:center;gap:10px;color:#cbd5e1}.dot{width:12px;height:12px;border-radius:50%;background:#64748b}.dot.on{background:#22c55e;box-shadow:0 0 12px #22c55e}
+button{border:0;border-radius:16px;padding:16px;width:100%;font-size:18px;font-weight:700;background:#22c55e;color:#052e16;margin-top:12px}
+button.stop{background:#ef4444;color:white}button.secondary{background:#334155;color:white;font-size:15px}
+.control{margin:18px 0}.row{display:flex;justify-content:space-between;gap:12px;margin-bottom:7px}.value{color:#93c5fd}
+input[type=range]{width:100%;accent-color:#60a5fa}
+.note{font-size:13px;color:#94a3b8;line-height:1.45}
+#err{color:#fecaca;white-space:pre-wrap}
+</style>
+</head>
+<body>
+<main>
+<h1>Hearing Assist</h1>
+<div class="sub">Phone microphone → processing → earphones</div>
+
+<div class="card">
+  <div class="status"><span id="dot" class="dot"></span><span id="status">Not listening</span></div>
+  <button id="start">🎙️ Start Listening</button>
+  <button id="stop" class="stop" style="display:none">⏹️ Stop</button>
+</div>
+
+<div class="card">
+  <div class="control"><div class="row"><span>Amplification</span><span class="value" id="gainVal">2.0×</span></div><input id="gain" type="range" min="1" max="5" step=".1" value="2"></div>
+  <div class="control"><div class="row"><span>Speech clarity</span><span class="value" id="clarityVal">Medium</span></div><input id="clarity" type="range" min="0" max="100" step="1" value="55"></div>
+  <div class="control"><div class="row"><span>Noise reduction</span><span class="value" id="noiseVal">Medium</span></div><input id="noise" type="range" min="0" max="100" step="1" value="55"></div>
+  <div class="control"><div class="row"><span>Bass</span><span class="value" id="bassVal">0 dB</span></div><input id="bass" type="range" min="-12" max="12" step="1" value="0"></div>
+  <div class="control"><div class="row"><span>Treble</span><span class="value" id="trebleVal">0 dB</span></div><input id="treble" type="range" min="-12" max="12" step="1" value="0"></div>
+  <div class="control"><div class="row"><span>Left ↔ Right balance</span><span class="value" id="balanceVal">Center</span></div><input id="balance" type="range" min="-1" max="1" step=".05" value="0"></div>
+</div>
+
+<div class="card note">
+<strong>First test:</strong> connect earphones before pressing Start. Keep amplification low initially. If you hear feedback/whistling, lower amplification or move the microphone away from the earphones.
+<br><br>This is an accessibility prototype, not a medical hearing aid or a substitute for a hearing evaluation.
+</div>
+<div id="err" class="card" style="display:none"></div>
+<button id="install" class="secondary" style="display:none">➕ Add to Home Screen</button>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

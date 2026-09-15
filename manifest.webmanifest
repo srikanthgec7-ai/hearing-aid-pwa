@@ -1,0 +1,5 @@
+{
+"name":"Hearing Assist","short_name":"Hearing Assist","start_url":".","display":"standalone",
+"background_color":"#111827","theme_color":"#111827","description":"A simple microphone-to-earphones hearing assistance prototype.",
+"icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
